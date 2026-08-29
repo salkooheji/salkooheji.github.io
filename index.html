@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salman Alkooheji - Data Science &amp; Business Analytics</title>
+<meta name="description" content="Machine learning and data projects across credit risk, NLP, computer vision and quantitative finance. Data Science &amp; Business Analytics student, University of London via BIBF.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0F1B2E;
+  --brass:#9C7A3C;
+  --char:#262626;
+  --slate:#6B7280;
+  --hair:#D8D2C4;
+  --paper:#FCFBF9;
+  --measure:64ch;
+  --gap-sec:clamp(38px,6vw,64px);
+  --pad-x:clamp(20px,5vw,28px);
+  --serif:'Lora',Georgia,serif;
+  --sans:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  background:var(--paper);color:var(--char);
+  font-family:var(--sans);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:clamp(320px,94vw,980px);margin:0 auto;padding:0 var(--pad-x)}
+
+/* ---------- eyebrow / labels ---------- */
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--brass);
+}
+
+/* ---------- masthead ---------- */
+header{padding:clamp(40px,7vw,68px) 0 clamp(30px,4vw,42px);border-bottom:1px solid var(--hair)}
+.rule-tick{width:44px;height:3px;background:var(--brass);margin-bottom:26px}
+h1{
+  font-family:var(--serif);font-weight:600;color:var(--navy);
+  font-size:clamp(2.4rem,7vw,4.1rem);line-height:1.02;letter-spacing:-.01em;
+}
+h1 .sur{color:var(--brass)}
+.hero{display:flex;gap:clamp(22px,4vw,40px);align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.hero-text{flex:1;min-width:0}
+.portrait{
+  width:clamp(104px,13vw,152px);height:clamp(104px,13vw,152px);
+  flex-shrink:0;border-radius:50%;margin-top:6px;
+}
+.strip{
+  margin-top:20px;font-family:var(--mono);
+  font-size:clamp(10.6px,0.95vw,12px);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--slate);line-height:2;max-width:var(--measure);
+}
+.strip i{color:var(--brass);font-style:normal;padding:0 .7em}
+.summary{
+  margin-top:14px;font-size:clamp(14.8px,1.05vw,15.8px);color:var(--char);
+  max-width:var(--measure);line-height:1.62;
+}
+.summary:first-of-type{margin-top:18px}
+.summary b{font-weight:600;color:var(--navy)}
+.creds{
+  list-style:none;margin-top:24px;max-width:var(--measure);
+  display:grid;grid-template-columns:max-content 1fr;gap:11px 18px;
+}
+.creds li{
+  display:grid;grid-column:1 / -1;grid-template-columns:subgrid;
+  align-items:baseline;padding-left:15px;border-left:2px solid var(--hair);
+}
+.creds strong{font-weight:600;color:var(--navy);font-size:14.8px}
+.creds span{color:var(--slate);font-size:14.2px;line-height:1.5}
+
+/* fallback where subgrid is unavailable */
+@supports not (grid-template-columns:subgrid){
+  .creds{display:block}
+  .creds li{display:block;margin-bottom:11px}
+  .creds strong{display:block}
+  .creds span{display:block;margin-top:2px}
+}
+
+@media (max-width:760px){
+  .creds{display:block}
+  .creds li{display:block;margin-bottom:12px}
+  .creds strong{display:block}
+  .creds span{display:block;margin-top:2px}
+}
+.meta{
+  margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 20px;
+  font-family:var(--mono);font-size:12.5px;color:var(--slate);
+}
+.meta a{color:var(--char);text-decoration:none;border-bottom:1px solid var(--hair);padding-bottom:1px}
+.meta a:hover,.meta a:focus-visible{color:var(--brass);border-color:var(--brass)}
+
+/* ---------- section frame ---------- */
+section{padding:var(--gap-sec) 0;border-bottom:1px solid var(--hair)}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.sec-head h2{
+  font-family:var(--serif);font-style:italic;font-weight:600;
+  color:var(--navy);font-size:1.5rem;letter-spacing:.01em;
+}
+.sec-note{color:var(--slate);font-size:14.6px;max-width:var(--measure);margin-bottom:clamp(24px,3.4vw,36px)}
+
+/* ---------- projects: factsheet rows ---------- */
+.proj{
+  display:grid;grid-template-columns:minmax(128px,0.9fr) minmax(0,4fr);
+  gap:clamp(16px,2.6vw,30px);
+  padding:clamp(20px,2.8vw,28px) 0;border-top:1px solid var(--hair);
+}
+.proj:first-of-type{border-top:none}
+.stat{font-family:var(--mono)}
+.stat .num{
+  display:block;color:var(--brass);font-size:clamp(1.2rem,1.9vw,1.44rem);font-weight:500;
+  line-height:1.15;letter-spacing:-.01em;
+}
+.stat .cap{
+  display:block;margin-top:7px;font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--slate);line-height:1.5;
+}
+.proj h3{font-family:var(--sans);font-size:1.06rem;font-weight:600;color:var(--navy)}
+.proj h3 a{color:inherit;text-decoration:none;border-bottom:1px solid var(--hair)}
+.proj h3 a:hover,.proj h3 a:focus-visible{color:var(--brass);border-color:var(--brass)}
+.proj p{margin-top:8px;font-size:15px;color:var(--char);max-width:var(--measure)}
+.stack{
+  margin-top:12px;font-family:var(--mono);font-size:11.5px;
+  color:var(--slate);letter-spacing:.02em;
+}
+.flag{
+  display:inline-block;margin-left:8px;padding:2px 7px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--brass);border:1px solid var(--hair);vertical-align:2px;
+}
+
+/* ---------- entries (work / education) ---------- */
+.entry{padding:20px 0;border-top:1px solid var(--hair)}
+.entry:first-of-type{border-top:none}
+.entry-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;align-items:baseline}
+.entry-top strong{font-weight:600;color:var(--navy);font-size:1.02rem}
+.entry-top .org{color:var(--char)}
+.entry-top time{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);white-space:nowrap}
+.entry p{margin-top:7px;font-size:14.8px;color:var(--char);max-width:var(--measure)}
+.entry .sub{color:var(--slate);font-size:14px;font-style:italic;margin-top:4px}
+
+/* ---------- skills ---------- */
+.skills{display:grid;gap:14px}
+.skills div{display:grid;grid-template-columns:minmax(112px,0.8fr) minmax(0,4fr);gap:clamp(12px,2vw,20px);align-items:baseline}
+.skills dt{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass)}
+.skills dd{font-size:15px}
+
+/* ---------- footer ---------- */
+footer{padding:var(--gap-sec) 0 clamp(48px,8vw,80px)}
+footer .cta{font-family:var(--serif);font-size:clamp(1.12rem,1.7vw,1.3rem);color:var(--navy);max-width:38ch;line-height:1.45}
+footer .links{margin-top:20px;display:flex;flex-wrap:wrap;gap:9px 10px}
+footer a{
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--char);
+  text-decoration:none;border:1px solid var(--hair);padding:7px 13px;
+}
+footer a:hover,footer a:focus-visible{color:var(--brass);border-color:var(--brass)}
+.colophon{margin-top:34px;font-family:var(--mono);font-size:11px;color:var(--slate);letter-spacing:.06em}
+
+a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
+
+@media (max-width:820px){
+  .proj{grid-template-columns:1fr;gap:12px}
+  .stat{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .stat .cap{margin-top:0}
+}
+@media (max-width:640px){
+  .hero{flex-direction:column-reverse;align-items:flex-start;gap:14px}
+  .portrait{margin-top:0;width:88px;height:88px}
+  header{padding:26px 0 22px}
+  .rule-tick{margin-bottom:16px}
+  h1{font-size:2.15rem}
+  .strip{margin-top:12px;letter-spacing:.09em;line-height:1.75}
+  .summary{margin-top:11px;font-size:14.4px;line-height:1.55}
+  .summary:first-of-type{margin-top:12px}
+  .creds{margin-top:14px;gap:8px}
+  .creds li{margin-bottom:8px}
+  .creds strong{font-size:14px}
+  .creds span{font-size:13.4px;line-height:1.42}
+  .meta{margin-top:16px;gap:6px 14px;font-size:12px}
+  .skills div{grid-template-columns:1fr;gap:2px}
+  .entry-top{flex-direction:column;align-items:flex-start}
+  footer .links{gap:9px 12px}
+  footer a{padding:9px 13px;font-size:12.4px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="rule-tick"></div>
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Salman <span class="sur">Alkooheji</span></h1>
+        <p class="strip">Data Science<i>&middot;</i>Financial Services<i>&middot;</i>AI &amp; Machine Learning<i>&middot;</i>Entrepreneurship</p>
+        <p class="summary">My focus is the intersection of <b>data and financial services</b>: internships in Bahrain&#39;s financial sector producing analysis for <b>senior leadership</b>, and machine learning projects spanning <b>credit risk, NLP, computer vision and recommender systems</b>, the largest trained on <b>307,000 loan applications</b>.</p>
+        <ul class="creds">
+          <li><strong>B.Sc. Data Science &amp; Business Analytics</strong><span>University of London, academic direction of LSE, delivered via BIBF. Full scholarship.</span></li>
+          <li><strong>Full-Stack Developer Diploma</strong><span>Reboot Coding Institute, completed 2026.</span></li>
+          <li><strong>Graduating April 2027</strong><span>Coursework complete. Available from November 2026.</span></li>
+        </ul>
+      </div>
+      <img class="portrait" src="portrait.png" alt="Salman Alkooheji" width="150" height="150">
+    </div>
+    <div class="meta">
+      <span>Manama, Bahrain</span>
+      <a href="mailto:s.alkooheji76@gmail.com">Email</a>
+      <a href="https://github.com/salkooheji">GitHub</a>
+      <a href="https://www.linkedin.com/in/salman-alkooheji/">LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<section class="rv">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">01</span><h2>Projects</h2></div>
+    <p class="sec-note">Every figure below is produced by the code and reproducible from the repository. Where a result fell short, it is reported as it came out.</p>
+
+    <div class="proj">
+      <div class="stat"><span class="num">0.77</span><span class="cap">Test AUC</span></div>
+      <div>
+        <h3><a href="https://github.com/salkooheji/credit-scoring">Credit Scoring</a></h3>
+        <p>Probability-of-default model on 307,000 loan applications, 1.7M bureau records and 1.67M previous applications. Every SHAP explanation is reconciled against the model's own output to within 1e-6, so no explanation can quietly describe a different number than the one the model produced.</p>
+        <div class="stack">LightGBM · SHAP · scikit-learn · Plotly</div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="stat"><span class="num">0.991</span><span class="cap">Precision, 15.6 FPS</span></div>
+      <div>
+        <h3><a href="https://github.com/salkooheji/vision-track">VisionTrack</a></h3>
+        <p>Real-time person detection, tracking and line counting across three simultaneous video streams. Pruning and INT8 quantization cut the model from 21.5 MB to 11.5 MB and made the CPU fallback 1.55 times faster.</p>
+        <div class="stack">PyTorch · YOLOv8 · ByteTrack · ONNX Runtime · Streamlit</div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="stat"><span class="num">100%</span><span class="cap">Retrieval @3</span></div>
+      <div>
+        <h3><a href="https://github.com/salkooheji/guidely">Guidely</a></h3>
+        <p>Retrieval-augmented assistant that answers questions on company documents and cites its sources. Content-hash caching means editing one document reprocesses one document. The model answers only from retrieved context, and says so when the answer is not there.</p>
+        <div class="stack">FastAPI · FAISS · sentence-transformers · Llama 3.1 · React</div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="stat"><span class="num">83.95%</span><span class="cap">Across 4 languages</span></div>
+      <div>
+        <h3><a href="https://github.com/salkooheji/document-categorization">Document Categorization</a></h3>
+        <p>One fine-tuned multilingual model classifies documents in English, French, Spanish and German, rather than four models behind a router. Per-language accuracy sits between 81.4 and 86.8 percent, which is the number that shows the transfer is real rather than English with three languages bolted on.</p>
+        <div class="stack">TensorFlow · DistilBERT · spaCy · TFLite</div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="stat"><span class="num">0.5222</span><span class="cap">Median validation AUC</span></div>
+      <div>
+        <h3><a href="https://github.com/salkooheji/sp500-strategies">SP500 Strategies</a></h3>
+        <p>A long/short signal on S&amp;P 500 constituents, built around eliminating temporal leakage rather than maximising a backtest. It did not beat the index over the test period. Reported honestly, because a leakage-free 0.52 is worth more than a compromised number that looks better.</p>
+        <div class="stack">pandas · scikit-learn · custom temporal CV</div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="stat"><span class="num">0.8499</span><span class="cap">Test RMSE</span></div>
+      <div>
+        <h3><a href="https://github.com/salkooheji/matrix-factorization">Matrix Factorization</a></h3>
+        <p>Movie recommender on one million ratings, comparing truncated SVD against probabilistic matrix factorization written from scratch with vectorized mini-batch SGD. PMF improved on SVD by 5.27 percent on a 95.5 percent sparse matrix.</p>
+        <div class="stack">NumPy · SciPy · Streamlit</div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="stat"><span class="num">66%</span><span class="cap">Test accuracy</span></div>
+      <div>
+        <h3><a href="https://github.com/salkooheji/emotions-detector">Emotions Detector</a></h3>
+        <p>A convolutional network trained from scratch on FER2013, no pretrained weights. Human label agreement on this dataset is around 65 percent, so the interesting part was closing a 34-point overfitting gap through layered regularization rather than chasing a higher number.</p>
+        <div class="stack">TensorFlow · Keras · OpenCV</div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="stat"><span class="num">--</span><span class="cap">In development</span></div>
+      <div>
+        <h3>portfolio-lens <span class="flag">Building</span></h3>
+        <p>Reconstructs institutional portfolios from raw SEC 13F filings, tracks what managers bought and sold each quarter, and measures concentration and overlap between them.</p>
+        <div class="stack">Python · SEC EDGAR · SQLite</div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="stat"><span class="num">--</span><span class="cap">In development</span></div>
+      <div>
+        <h3>bellwether-agent <span class="flag">Building</span></h3>
+        <p>An autonomous agent that runs on new filings, decides for itself what is worth investigating, works out what might explain it, and writes a sourced briefing memo. Nobody prompts it.</p>
+        <div class="stack">Python · LLM tool use · scheduled runs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rv">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">02</span><h2>Experience</h2></div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <span><strong>Data Scientist Intern</strong> <span class="org">- BENEFIT: BCRB Department</span></span>
+        <time>Aug - Sep 2025</time>
+      </div>
+      <p>Cleaned and prepared datasets and built Power BI dashboards supporting financial quantitative analysis, including market share analysis. Presented findings to department heads and managers, and was invited to return.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <span><strong>Performance Analyst Intern</strong> <span class="org">- Tamkeen: Strategy &amp; Transformation</span></span>
+        <time>Jul - Aug 2024</time>
+      </div>
+      <p>Structured data to evaluate outcomes across more than 20 of Tamkeen's support programs, and built Excel benchmarking reports measuring programme effectiveness that fed management's reporting to senior leadership.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <span><strong>Trainee</strong> <span class="org">- BIBF: Academics Department</span></span>
+        <time>Sep - Oct 2023</time>
+      </div>
+      <p>Excel-based data gathering and management.</p>
+    </div>
+  </div>
+</section>
+
+<section class="rv">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">03</span><h2>Leadership</h2></div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <span><strong>Student Ambassador</strong> <span class="org">- BIBF-LSE Programme</span></span>
+        <time>2024 - 2026</time>
+      </div>
+      <p>Represented BIBF at open days and external conferences. Served as VP of the Student Council through 2025, organising induction, sports and cultural events for a student community of 200 or more.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <span><strong>Co-Founder</strong> <span class="org">- AutoMentor, Startup Weekend Bahrain</span></span>
+        <time>2023 - 2024</time>
+      </div>
+      <p>Originated the concept and led a four-person team designing a platform connecting drivers with mechanics and garages. Won second place and a BD 2,000 grant on the business model, market strategy and competitive analysis presented to judges.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <span><strong>Volunteer</strong> <span class="org">- Startup Bahrain</span></span>
+        <time>2024 - 2025</time>
+      </div>
+      <p>Supported event logistics across multiple Startup Bahrain events, progressing to managing the logistics team by the final event.</p>
+    </div>
+  </div>
+</section>
+
+<section class="rv">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">04</span><h2>Education</h2></div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <span><strong>B.Sc. Data Science &amp; Business Analytics</strong></span>
+        <time>2023 - 2027</time>
+      </div>
+      <p class="sub">University of London, academic direction of LSE, delivered via BIBF. Full scholarship.</p>
+      <p>Coursework in Python, R and statistics. Preceded by the International Foundation Programme, 2022 - 2023.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <span><strong>Full-Stack Developer Diploma</strong></span>
+        <time>2024 - 2026</time>
+      </div>
+      <p class="sub">Reboot Coding Institute, Bahrain.</p>
+      <p>Coursework in Go, JavaScript, Rust and Python.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <span><strong>IBCP Programme with Diploma</strong></span>
+        <time>2021 - 2022</time>
+      </div>
+      <p class="sub">Naseem International School.</p>
+    </div>
+  </div>
+</section>
+
+<section class="rv">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">05</span><h2>Skills</h2></div>
+    <dl class="skills">
+      <div><dt>Programming</dt><dd>Python (pandas, scikit-learn, LightGBM, PyTorch, TensorFlow, OpenCV), SQL, JavaScript (React), FastAPI</dd></div>
+      <div><dt>Analytics</dt><dd>Machine learning, data analysis and visualization, statistics, benchmarking and reporting</dd></div>
+      <div><dt>Tools</dt><dd>Excel, Power BI, Tableau, PowerPoint, Git</dd></div>
+      <div><dt>Languages</dt><dd>Arabic (native), English (fluent)</dd></div>
+    </dl>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="cta">Open to internships and analyst roles across investment banking, asset management and private equity, and graduate roles in data science, machine learning and AI.</p>
+    <div class="links">
+      <a href="mailto:s.alkooheji76@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/salman-alkooheji/">LinkedIn</a>
+      <a href="https://github.com/salkooheji">GitHub</a>
+    </div>
+    <p class="colophon">Manama, Bahrain</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+  },{rootMargin:'0px 0px -60px 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
