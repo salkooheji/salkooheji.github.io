@@ -292,11 +292,11 @@ a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
     </div>
 
     <div class="proj">
-      <div class="stat"><span class="num">--</span><span class="cap">In development</span></div>
+      <div class="stat"><span class="num">99.68%</span><span class="cap">CUSIP resolution by value</span></div>
       <div>
-        <h3>13f-portfolio-analysis <span class="flag">Building</span></h3>
-        <p>Reconstructs institutional portfolios from raw SEC 13F filings, tracks what managers bought and sold each quarter, and measures concentration and overlap between them.</p>
-        <div class="stack">Python · SEC EDGAR · SQLite</div>
+        <h3><a href="https://github.com/salkooheji/13f-portfolio-analysis">13F Portfolio Analysis</a></h3>
+        <p>Reconstructs institutional portfolios from raw SEC 13F filings: 44 filings, 37,959 holdings, all parsed. Value units are verified per filing rather than assumed from the SEC's changeover date, because one tracked manager was still reporting in thousands into 2024 and a hard-coded cutover would have understated every one of their books by a factor of a thousand.</p>
+        <div class="stack">Python · SEC EDGAR · SQLite · pandas · Streamlit</div>
       </div>
     </div>
 
