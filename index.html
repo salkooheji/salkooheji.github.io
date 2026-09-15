@@ -232,7 +232,7 @@ a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
       <div class="stat"><span class="num">99.68%</span><span class="cap">CUSIP resolution by value</span></div>
       <div>
         <h3><a href="https://github.com/salkooheji/13f-portfolio-analysis">13F Portfolio Analysis</a></h3>
-        <p>Reconstructs institutional portfolios from raw SEC 13F filings: 44 filings, 37,959 holdings, all parsed. Value units are verified per filing rather than assumed from the SEC's changeover date, because one tracked manager was still reporting in thousands into 2024 and a hard-coded cutover would have understated every one of their books by a factor of a thousand.</p>
+        <p>Reconstructs institutional portfolios from raw SEC 13F filings: 44 filings, 37,959 holdings, all parsed. Value units are verified per filing rather than assumed from the SEC's changeover date, because one tracked manager kept reporting in thousands into 2024 and a hard-coded cutover would have understated their book a thousandfold.</p>
         <div class="stack">Python · SEC EDGAR · SQLite · pandas · Streamlit</div>
       </div>
     </div>
@@ -241,7 +241,7 @@ a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
       <div class="stat"><span class="num">60%</span><span class="cap">vs 30% baseline, 30 trials</span></div>
       <div>
         <h3><a href="https://github.com/salkooheji/bellwether-agent">Bellwether Agent</a></h3>
-        <p>An autonomous agent that runs on the 13F database with no human prompt: rules surface findings worth investigating, and for each one it gathers evidence with four tools and writes a memo where every figure must trace to a tool result. Across five scenarios, three of them traps, the best agent configuration completed 60 percent of tasks against 30 percent for a fixed non-agentic pipeline. The loop is written directly against the tool-calling API, no framework.</p>
+        <p>An autonomous agent that runs on the 13F database with no human prompt, gathering evidence with four tools and writing memos where every figure must trace to a tool result. Across five scenarios, three of them traps, the best configuration completed 60 percent of tasks against 30 percent for a fixed non-agentic pipeline, at roughly twelve times the model calls.</p>
         <div class="stack">Python · Groq · SQLite · yfinance · Tavily · pandas · pytest</div>
       </div>
     </div>
