@@ -205,7 +205,7 @@ a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
       <div class="hero-text">
         <h1>Salman <span class="sur">Alkooheji</span></h1>
         <p class="strip">Data Science<i>&middot;</i>Financial Services<i>&middot;</i>AI &amp; Machine Learning<i>&middot;</i>Entrepreneurship</p>
-        <p class="summary">My focus is the intersection of <b>data and financial services</b>: internships in Bahrain&#39;s financial sector producing analysis for <b>senior leadership</b>, and machine learning projects spanning <b>credit risk, NLP, computer vision and recommender systems</b>, the largest trained on <b>307,000 loan applications</b>.</p>
+        <p class="summary">My focus is the intersection of <b>data and financial services</b>: internships in Bahrain&#39;s financial sector producing analysis for <b>senior leadership</b>, and machine learning projects spanning <b>SEC filing analysis, autonomous agents, credit risk, NLP and computer vision</b>, the largest trained on <b>307,000 loan applications</b>.</p>
         <ul class="creds">
           <li><strong>B.Sc. Data Science &amp; Business Analytics</strong><span>University of London, academic direction of LSE, delivered via BIBF. Full scholarship.</span></li>
           <li><strong>Full-Stack Developer Diploma</strong><span>Reboot Coding Institute, completed 2026.</span></li>
@@ -229,6 +229,24 @@ a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
     <p class="sec-note">Every figure below is produced by the code and reproducible from the repository. Where a result fell short, it is reported as it came out.</p>
 
     <div class="proj">
+      <div class="stat"><span class="num">99.68%</span><span class="cap">CUSIP resolution by value</span></div>
+      <div>
+        <h3><a href="https://github.com/salkooheji/13f-portfolio-analysis">13F Portfolio Analysis</a></h3>
+        <p>Reconstructs institutional portfolios from raw SEC 13F filings: 44 filings, 37,959 holdings, all parsed. Value units are verified per filing rather than assumed from the SEC's changeover date, because one tracked manager was still reporting in thousands into 2024 and a hard-coded cutover would have understated every one of their books by a factor of a thousand.</p>
+        <div class="stack">Python · SEC EDGAR · SQLite · pandas · Streamlit</div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="stat"><span class="num">60%</span><span class="cap">vs 30% baseline, 30 trials</span></div>
+      <div>
+        <h3><a href="https://github.com/salkooheji/bellwether-agent">Bellwether Agent</a></h3>
+        <p>An autonomous agent that runs on a schedule over the 13F database with no human prompt. Rules surface findings worth investigating; for each one the agent plans an approach, gathers evidence with four tools, and writes a memo where every figure must trace to a tool result, rejecting and rewriting any that cites a number no tool returned. Across five scenarios, three of them traps, the best agent configuration completed 60 percent of tasks against 30 percent for a fixed non-agentic pipeline. The loop is written directly against the tool-calling API, no framework.</p>
+        <div class="stack">Python · Groq · SQLite · yfinance · Tavily · pandas · pytest</div>
+      </div>
+    </div>
+
+    <div class="proj">
       <div class="stat"><span class="num">0.77</span><span class="cap">Test AUC</span></div>
       <div>
         <h3><a href="https://github.com/salkooheji/credit-scoring">Credit Scoring</a></h3>
@@ -238,20 +256,20 @@ a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
     </div>
 
     <div class="proj">
-      <div class="stat"><span class="num">0.991</span><span class="cap">Precision, 15.6 FPS</span></div>
-      <div>
-        <h3><a href="https://github.com/salkooheji/vision-track">VisionTrack</a></h3>
-        <p>Real-time person detection, tracking and line counting across three simultaneous video streams. Pruning and INT8 quantization cut the model from 21.5 MB to 11.5 MB and made the CPU fallback 1.55 times faster.</p>
-        <div class="stack">PyTorch · YOLOv8 · ByteTrack · ONNX Runtime · Streamlit</div>
-      </div>
-    </div>
-
-    <div class="proj">
       <div class="stat"><span class="num">100%</span><span class="cap">Retrieval @3</span></div>
       <div>
         <h3><a href="https://github.com/salkooheji/guidely">Guidely</a></h3>
         <p>Retrieval-augmented assistant that answers questions on company documents and cites its sources. Content-hash caching means editing one document reprocesses one document. The model answers only from retrieved context, and says so when the answer is not there.</p>
         <div class="stack">FastAPI · FAISS · sentence-transformers · Llama 3.1 · React</div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="stat"><span class="num">0.991</span><span class="cap">Precision, 15.6 FPS</span></div>
+      <div>
+        <h3><a href="https://github.com/salkooheji/vision-track">VisionTrack</a></h3>
+        <p>Real-time person detection, tracking and line counting across three simultaneous video streams. Pruning and INT8 quantization cut the model from 21.5 MB to 11.5 MB and made the CPU fallback 1.55 times faster.</p>
+        <div class="stack">PyTorch · YOLOv8 · ByteTrack · ONNX Runtime · Streamlit</div>
       </div>
     </div>
 
@@ -288,24 +306,6 @@ a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
         <h3><a href="https://github.com/salkooheji/emotions-detector">Emotions Detector</a></h3>
         <p>A convolutional network trained from scratch on FER2013, no pretrained weights. Human label agreement on this dataset is around 65 percent, so the interesting part was closing a 34-point overfitting gap through layered regularization rather than chasing a higher number.</p>
         <div class="stack">TensorFlow · Keras · OpenCV</div>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="stat"><span class="num">99.68%</span><span class="cap">CUSIP resolution by value</span></div>
-      <div>
-        <h3><a href="https://github.com/salkooheji/13f-portfolio-analysis">13F Portfolio Analysis</a></h3>
-        <p>Reconstructs institutional portfolios from raw SEC 13F filings: 44 filings, 37,959 holdings, all parsed. Value units are verified per filing rather than assumed from the SEC's changeover date, because one tracked manager was still reporting in thousands into 2024 and a hard-coded cutover would have understated every one of their books by a factor of a thousand.</p>
-        <div class="stack">Python · SEC EDGAR · SQLite · pandas · Streamlit</div>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="stat"><span class="num">--</span><span class="cap">In development</span></div>
-      <div>
-        <h3>bellwether-agent <span class="flag">Building</span></h3>
-        <p>An autonomous agent that runs on new filings, decides for itself what is worth investigating, works out what might explain it, and writes a sourced briefing memo. Nobody prompts it.</p>
-        <div class="stack">Python · LLM tool use · scheduled runs</div>
       </div>
     </div>
   </div>
@@ -395,6 +395,15 @@ a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
 
     <div class="entry">
       <div class="entry-top">
+        <span><strong>CFA Program - Level I Candidate</strong></span>
+        <time>2026 - 2027</time>
+      </div>
+      <p class="sub">CFA Institute.</p>
+      <p>Registered for the February 2027 exam.</p>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
         <span><strong>IBCP Programme with Diploma</strong></span>
         <time>2021 - 2022</time>
       </div>
@@ -407,8 +416,8 @@ a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">05</span><h2>Skills</h2></div>
     <dl class="skills">
-      <div><dt>Programming</dt><dd>Python (pandas, scikit-learn, LightGBM, PyTorch, TensorFlow, OpenCV), SQL, JavaScript (React), FastAPI</dd></div>
-      <div><dt>Analytics</dt><dd>Machine learning, data analysis and visualization, statistics, benchmarking and reporting</dd></div>
+      <div><dt>Programming</dt><dd>Python (pandas, scikit-learn, LightGBM, PyTorch, TensorFlow/Keras, OpenCV, SHAP), SQL/SQLite, JavaScript (React), Go, FastAPI, Streamlit</dd></div>
+      <div><dt>ML &amp; Data</dt><dd>Machine learning, NLP (DistilBERT, spaCy), RAG (FAISS, Llama 3.1), computer vision (YOLOv8, ByteTrack, ONNX), statistics, benchmarking, reproducible evaluation</dd></div>
       <div><dt>Tools</dt><dd>Excel, Power BI, Tableau, PowerPoint, Git</dd></div>
       <div><dt>Languages</dt><dd>Arabic (native), English (fluent)</dd></div>
     </dl>
@@ -417,7 +426,7 @@ a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
 
 <footer>
   <div class="wrap">
-    <p class="cta">Open to internships and analyst roles across investment banking, asset management and private equity, and graduate roles in data science, machine learning and AI.</p>
+    <p class="cta">Building toward a career where finance and data science meet.</p>
     <div class="links">
       <a href="mailto:s.alkooheji76@gmail.com">Email</a>
       <a href="https://www.linkedin.com/in/salman-alkooheji/">LinkedIn</a>
